@@ -13,7 +13,7 @@ public class CameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = player.transform.position + new Vector3(-16.1f, 17, 16.5f);
+        transform.position = Vector3.LerpUnclamped(transform.position, player.transform.position + new Vector3(-16.1f, 17, 16.5f),  Time.smoothDeltaTime);
         transform.rotation = Quaternion.Euler(45, 90, 0);
 	}
 }
