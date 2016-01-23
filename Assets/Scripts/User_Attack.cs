@@ -3,8 +3,26 @@ using System.Collections;
 
 public class User_Attack : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    System.Collections.Generic.List<GameObject> collidingObjects = new System.Collections.Generic.List<GameObject>();
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(!collidingObjects.Contains(collision.gameObject))
+        {
+            collidingObjects.Add(collision.gameObject);
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (!collidingObjects.Contains(collision.gameObject))
+        {
+            collidingObjects.Remove(collision.gameObject);
+        }
+    }
+
+    // Use this for initialization
+    void Start () {
 	
 	}
 	
@@ -13,17 +31,10 @@ public class User_Attack : MonoBehaviour {
 
 		if (Input.GetMouseButtonDown (0)) {
 			Debug.Log ("Pressed left click.");
-
-			RaycastHit hit;
-
-			if (Physics.SphereCast(this.transform.position, 0.8f, Vector3.forward, out hit, 1)){
-				hit.transform.gameObject.SendMessage("ApplyDamage", 25);
-			}    
-
-
-
-
-
+            foreach(GameObject obj in collidingObjects)
+            {
+                obj.GetComponent<Stats>().ApplyDamage(30); // TODO get players str
+            }
 		}
 	
 	}
