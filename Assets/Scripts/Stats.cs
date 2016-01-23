@@ -37,4 +37,9 @@ public class Stats : MonoBehaviour
     {
 
     }
+
+    public void ApplyDamage(int damage)
+    {
+        Health -= damage * damage / def;
+    }
 }
