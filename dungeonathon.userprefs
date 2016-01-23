@@ -1,0 +1,14 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\User_Attack.cs">
+    <Files>
+      <File FileName="Assets\Scripts\PlayerMovementSimple.cs" Line="15" Column="2" />
+      <File FileName="Assets\Scripts\User_Attack.cs" Line="17" Column="4" />
+      <File FileName="Assets\Scripts\StatusManager.cs" Line="13" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

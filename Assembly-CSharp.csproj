@@ -49,7 +49,9 @@
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementSimple.cs" />
+     <Compile Include="Assets\Scripts\StatusManager.cs" />
      <Compile Include="Assets\Scripts\UI\StatsUI.cs" />
+     <Compile Include="Assets\Scripts\User_Attack.cs" />
      <Compile Include="Assets\Scripts\WC_Camera.cs" />
      <None Include="Assets\Shaders\HumanShader.shader" />
  <Reference Include="UnityEngine.UI">
