@@ -5,18 +5,18 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
     public float speed = 3.0F;
     public float rotateSpeed = 3.0F;
+
+    public float look_speed = 5;
+    //Vector3 cur_loc, prev_loc;
+    //******************Credit from http://answers.unity3d.com/questions/967574/rotate-a-character-controller-in-the-direction-of.html
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
-        transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        float curSpeed = speed * Input.GetAxis("Vertical");
+        Vector3 next_dir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-        //attempt isometric movement
-        controller.SimpleMove(forward * curSpeed);
-    }
-
-    public void isoMovement(float xMag, float zMag){
-       // Vector3 
+        if(next_dir != Vector3.zero){
+            transform.rotation = Quaternion.LookRotation(next_dir);
+            controller.Move(next_dir/ 8);
+        }
     }
 }
