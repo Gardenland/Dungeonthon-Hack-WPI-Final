@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\User_Attack.cs" />
      <Compile Include="Assets\Scripts\WC_Camera.cs" />
      <None Include="Assets\Shaders\HumanShader.shader" />
+     <None Include="Assets\Shaders\UnlitVertexColor.shader" />
      <None Include="Assets\Shaders\AnimatedVertexNoUV.shader" />
      <None Include="Assets\Shaders\AnimatedVertex.shader" />
  <Reference Include="UnityEngine.UI">
