@@ -18,10 +18,10 @@ public class ProjectileMotion : MonoBehaviour {
         if (!collidingObjects.Contains(collider.gameObject))
         {
             collidingObjects.Add(collider.gameObject);
-            if (collider.gameObject.Equals(GameObject.FindGameObjectWithTag("Enemy")) && collider.gameObject != null)
+            if ( collider.gameObject != null)
             {
                 collider.gameObject.GetComponent<Stats>().ApplyDamage(damage); // TODO get players str
-                Destroy(this);
+                Destroy(gameObject,0.05f);
             }
         }
     }
@@ -32,7 +32,7 @@ public class ProjectileMotion : MonoBehaviour {
         {
             collidingObjects.Remove(collider.gameObject);
         }
-        if (collider.gameObject.Equals(GameObject.FindGameObjectWithTag("Enemy")))
+        if (collider.gameObject != null)
         {
             if(collider.gameObject.GetComponent<Stats>().Health <= 0)
             {
