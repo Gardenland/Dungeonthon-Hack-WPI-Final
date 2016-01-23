@@ -1,32 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class User_Attack : MonoBehaviour {
+public class User_Attack : MonoBehaviour
+{
 
     public System.Collections.Generic.List<GameObject> collidingObjects = new System.Collections.Generic.List<GameObject>();
 
-    public float cooldown =  0.0f;
+    public float cooldown = 0.0f;
+    public float MeleeAnimTime = 3f;
+    bool Swinging = false;
     public int damage = 5;
     public int arrow_damage = 20;
     public float shot_delay = 0;
     public float shot_cooldown = 0;
     public float speed = 0;
 
+    private GameObject swingingWeapon;
+
     float arrow_spawn_dist = 2.0f;
     GameObject arrow;
 
     void OnTriggerEnter(Collider collider)
     {
-		//Debug.Log ("There was a collision");
-        if(!collidingObjects.Contains(collider.gameObject))
+        //Debug.Log ("There was a collision");
+        if (!collidingObjects.Contains(collider.gameObject))
         {
             collidingObjects.Add(collider.gameObject);
         }
     }
 
-	void OnTriggerExit(Collider collider)
+    void OnTriggerExit(Collider collider)
     {
-		//Debug.Log ("There is no longer a collision");
+        //Debug.Log ("There is no longer a collision");
         if (collidingObjects.Contains(collider.gameObject))
         {
             collidingObjects.Remove(collider.gameObject);
@@ -41,21 +46,25 @@ public class User_Attack : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         arrow = GameObject.FindGameObjectWithTag("Arrow");
         Rigidbody arrow_body = arrow.GetComponent<Rigidbody>();
         shot_delay = arrow.GetComponent<ProjectileMotion>().shot_delay;
         shot_cooldown = arrow.GetComponent<ProjectileMotion>().shot_cooldown;
         speed = arrow.GetComponent<ProjectileMotion>().speed;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        MeleeAnimTime = 3;
+    }
 
-		if (Input.GetButton("Fire1")) {
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (Input.GetButtonDown("Fire1"))
+        {
             //Debug.Log ("Pressed left click.");
             Attack();
-            
+
         }
         if (Input.GetButtonUp("Fire2"))
         {
@@ -66,9 +75,9 @@ public class User_Attack : MonoBehaviour {
 
     void Attack()
     {
-        if(Time.time - cooldown > 1.5f)
+        if (!Swinging && Time.time - cooldown > 1.5f)
         {
-            //canAttack = true;
+            PlayAnimation();
             foreach (GameObject obj in collidingObjects)
             {
                 if (obj.Equals(GameObject.FindGameObjectWithTag("Enemy")) && obj != null)
@@ -79,6 +88,23 @@ public class User_Attack : MonoBehaviour {
             }
             cooldown = Time.time;
         }
+    }
+
+    void PlayAnimation()
+    {
+        Debug.Log("Playing Anim in class: " + this);
+        Swinging = true;
+        swingingWeapon = Instantiate(Resources.Load("Sword"), transform.position + arrow_spawn_dist * transform.right, transform.rotation) as GameObject;
+        swingingWeapon.transform.parent = transform;
+        // lerp from y:-90 to y:90 over MeleeAnimTime
+        StartCoroutine("StopAnimation");
+    }
+
+    IEnumerator StopAnimation()
+    {
+        yield return new WaitForSeconds(MeleeAnimTime);
+        Destroy(swingingWeapon);
+        Swinging = false;
     }
 
     void Shoot()
