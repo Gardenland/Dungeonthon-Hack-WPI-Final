@@ -48,11 +48,7 @@ public class User_Attack : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        arrow = GameObject.FindGameObjectWithTag("Arrow");
-        Rigidbody arrow_body = arrow.GetComponent<Rigidbody>();
-        shot_delay = arrow.GetComponent<ProjectileMotion>().shot_delay;
-        shot_cooldown = arrow.GetComponent<ProjectileMotion>().shot_cooldown;
-        speed = arrow.GetComponent<ProjectileMotion>().speed;
+        
         MeleeAnimTime = 3;
     }
 
@@ -114,12 +110,12 @@ public class User_Attack : MonoBehaviour
             GameObject arrow_clone;
             Rigidbody clone_body;
             //shoot
-            Vector3 arrow_spawn = transform.position + new Vector3(0, 0, transform.localPosition.z + 1);
-            arrow_clone = Instantiate(Resources.Load("Arrow"), transform.position + arrow_spawn_dist * transform.forward, transform.rotation) as GameObject;
+            //Vector3 arrow_spawn = transform.position + new Vector3(0, 0, transform.localPosition.z + 1);
+            arrow_clone = Instantiate(Resources.Load("FireArrow"), transform.position + arrow_spawn_dist * transform.forward, transform.rotation) as GameObject;
             clone_body = arrow_clone.GetComponent<Rigidbody>();
             clone_body.velocity = transform.forward * speed;
             clone_body.AddForce(transform.forward * speed, ForceMode.Force);
-            Destroy(arrow_clone, 3f);
+            Destroy(arrow_clone, 1.5f);
 
 
 
