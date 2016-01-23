@@ -18,11 +18,15 @@ public class EnemyBehavior : MonoBehaviour {
 	public float Playerradius = 1f ;// Player.GetComponent;
     public Vector3 enemy_direction;
     public Vector3 enemy_movement;
+    public float enemy_health;
+    public float gravity = 10.0f;
 	// Update is called once per frame
 	void Update () {
         CharacterController enemyController = GetComponent<CharacterController>();
         enemy_direction = Player.transform.position - transform.position;
         enemy_movement = enemy_direction.normalized * speed * Time.deltaTime;
+        enemy_movement.y -= gravity * Time.deltaTime;
+        enemy_health = this.GetComponent<Stats>().Health;
 
 		followdist = Vector3.Distance(transform.position, Player.transform.position);
 		step = speed - Time.deltaTime;

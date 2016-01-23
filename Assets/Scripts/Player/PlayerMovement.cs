@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
     public float speed = 3.0F;
     public float rotateSpeed = 3.0F;
+    public float gravity = 10.0f;
 
     public float look_speed = 5;
     //Vector3 cur_loc, prev_loc;
@@ -16,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if(next_dir != Vector3.zero){
             transform.rotation = Quaternion.LookRotation(next_dir);
+            next_dir.y -= gravity * Time.deltaTime; 
             controller.Move(next_dir/ 8);
         }
     }

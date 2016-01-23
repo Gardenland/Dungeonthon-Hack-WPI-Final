@@ -75,7 +75,10 @@
     <Compile Include="Assets\Scripts\WC_Camera.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Shaders\AnimatedVertex.shader" />
+    <None Include="Assets\Shaders\AnimatedVertexNoUV.shader" />
     <None Include="Assets\Shaders\HumanShader.shader" />
+    <None Include="Assets\Shaders\UnlitVertexColor.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
