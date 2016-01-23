@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour {
 	
 	}
 
-    public void onDeath()
+    public void OnDeath()
     {
         Destroy(gameObject);
     }

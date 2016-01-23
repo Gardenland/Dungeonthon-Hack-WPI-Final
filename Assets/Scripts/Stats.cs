@@ -29,6 +29,9 @@ public class Stats : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		hp = 50;
+		str = 5;
+		def = 1;
 
     }
 
@@ -41,5 +44,6 @@ public class Stats : MonoBehaviour
     public void ApplyDamage(int damage)
     {
         Health -= damage * damage / def;
+
     }
 }

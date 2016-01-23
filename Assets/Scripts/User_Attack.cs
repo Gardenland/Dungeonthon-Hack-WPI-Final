@@ -3,21 +3,23 @@ using System.Collections;
 
 public class User_Attack : MonoBehaviour {
 
-    System.Collections.Generic.List<GameObject> collidingObjects = new System.Collections.Generic.List<GameObject>();
+    public System.Collections.Generic.List<GameObject> collidingObjects = new System.Collections.Generic.List<GameObject>();
 
-    void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter(Collider collider)
     {
-        if(!collidingObjects.Contains(collision.gameObject))
+		Debug.Log ("There was a collision");
+        if(!collidingObjects.Contains(collider.gameObject))
         {
-            collidingObjects.Add(collision.gameObject);
+            collidingObjects.Add(collider.gameObject);
         }
     }
 
-    void OnCollisionExit(Collision collision)
+	void OnTriggerExit(Collider collider)
     {
-        if (!collidingObjects.Contains(collision.gameObject))
+		Debug.Log ("There is no longer a collision");
+        if (collidingObjects.Contains(collider.gameObject))
         {
-            collidingObjects.Remove(collision.gameObject);
+            collidingObjects.Remove(collider.gameObject);
         }
     }
 
