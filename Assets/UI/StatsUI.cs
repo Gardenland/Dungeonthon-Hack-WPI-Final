@@ -4,9 +4,33 @@ using System.Collections;
 
 public class StatsUI : MonoBehaviour {
 
-    public Text health { get; set; }
-    public Text mana { get; set; }
-    public Text kills { get; set; }
+    private Text health;
+    private Text mana;
+    private Text kills;
+
+    public int Health
+    {
+        set
+        {
+            health.text = "Health: " + value;
+        }
+    }
+
+    public int Mana
+    {
+        set
+        {
+            mana.text = "Mana: " + value;
+        }
+    }
+
+    public int Kills
+    {
+        set
+        {
+            kills.text = "Kills: " + value;
+        }
+    }
 
     // Use this for initialization
     void Start () {
