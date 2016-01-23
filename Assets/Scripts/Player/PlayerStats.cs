@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerStats : MonoBehaviour {
+public class PlayerStats : Stats {
 
-    private int hp;
     private int mp;
     private int kills;
     private StatsUI ui;
@@ -19,7 +18,7 @@ public class PlayerStats : MonoBehaviour {
             hp = value;
             ui.Health = value;
             if (hp <= 0)
-                ;// TODO Death method
+                gameObject.SendMessage("OnDeath");
         }
     }
 
