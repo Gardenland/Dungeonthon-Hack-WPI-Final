@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: f079944c2ffe09642a7714ee7e9f4234
-timeCreated: 1453575054
+guid: bcb1c40a8227c884293a072c0240661c
+timeCreated: 1453582614
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: ambientLight3
+    4300000: pCube4
   materials:
     importMaterials: 1
     materialName: 0
@@ -34,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 15
+    globalScale: 6
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
