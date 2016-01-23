@@ -38,7 +38,10 @@ public class EnemyBehavior : MonoBehaviour {
 		}
         if (Player != null)
         {
-            transform.LookAt(Player.transform.position);
+			Quaternion lookRotation;
+			lookRotation = Quaternion.LookRotation(Player.transform.position);
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 1000);
+            //transform.LookAt(Player.transform.position);
         }
 
     }

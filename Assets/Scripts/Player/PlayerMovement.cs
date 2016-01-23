@@ -13,12 +13,12 @@ public class PlayerMovement : MonoBehaviour {
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
-        Vector3 next_dir = new Vector3(Input.GetAxis("Vertical"), 0, -Input.GetAxis("Horizontal"));
+        Vector3 next_dir = new Vector3(Input.GetAxis("Vertical"), 0, -Input.GetAxis("Horizontal")) * speed;
 
         if(next_dir != Vector3.zero){
             transform.rotation = Quaternion.LookRotation(next_dir);
             next_dir.y -= gravity * Time.deltaTime; 
-            controller.Move(next_dir/ 8);
+			controller.Move(next_dir/8);
         }
     }
 }
