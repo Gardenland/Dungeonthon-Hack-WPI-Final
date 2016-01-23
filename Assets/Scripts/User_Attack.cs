@@ -5,6 +5,10 @@ public class User_Attack : MonoBehaviour {
 
     public System.Collections.Generic.List<GameObject> collidingObjects = new System.Collections.Generic.List<GameObject>();
 
+    public float cooldown =  0.0f;
+   // bool canAttack = false;
+    public int damage = 5;
+
 	void OnTriggerEnter(Collider collider)
     {
 		//Debug.Log ("There was a collision");
@@ -21,6 +25,13 @@ public class User_Attack : MonoBehaviour {
         {
             collidingObjects.Remove(collider.gameObject);
         }
+        if (collider.gameObject.Equals(GameObject.FindGameObjectWithTag("Enemy")))
+        {
+            if (collider.gameObject.GetComponent<Stats>().Health <= 0) //if the enemy dies, remove it from the list of collisions
+            {
+                collidingObjects.Remove(collider.gameObject);
+            }
+        }
     }
 
     // Use this for initialization
@@ -31,14 +42,28 @@ public class User_Attack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (Input.GetMouseButtonDown (0)) {
-			//Debug.Log ("Pressed left click.");
-            foreach(GameObject obj in collidingObjects)
-            {
-                if(obj.Equals(GameObject.FindGameObjectWithTag("Enemy")))
-                obj.GetComponent<Stats>().ApplyDamage(30); // TODO get players str
-            }
-		}
+		if (Input.GetButton("Fire1")) {
+            //Debug.Log ("Pressed left click.");
+            Attack();
+            
+        }
 	
 	}
+
+    void Attack()
+    {
+        if(Time.time - cooldown > 1.5f)
+        {
+            //canAttack = true;
+            foreach (GameObject obj in collidingObjects)
+            {
+                if (obj.Equals(GameObject.FindGameObjectWithTag("Enemy")) && obj != null)
+                {
+                    obj.GetComponent<Stats>().ApplyDamage(damage); // TODO get players str
+                }
+
+            }
+            cooldown = Time.time;
+        }
+    }
 }

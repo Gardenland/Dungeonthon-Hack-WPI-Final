@@ -19,7 +19,7 @@ public class Stats : MonoBehaviour
             hp = value;
             if (hp <= 0)
                 
-                gameObject.BroadcastMessage("OnDeath");
+                gameObject.SendMessage("OnDeath");
         }
     }
 

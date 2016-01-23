@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Player\CameraScript.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
+    <Compile Include="Assets\Scripts\ProjectileMotion.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
     <Compile Include="Assets\Scripts\UI\StatsUI.cs" />
     <Compile Include="Assets\Scripts\User_Attack.cs" />

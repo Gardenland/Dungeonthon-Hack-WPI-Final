@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 [RequireComponent(typeof(CharacterController))]
-public class Enemy1Script : MonoBehaviour {
+public class EnemyBehavior : MonoBehaviour {
 
 	public GameObject Player;
 	public GameObject Enemy1;
