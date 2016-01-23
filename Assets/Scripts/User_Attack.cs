@@ -7,7 +7,7 @@ public class User_Attack : MonoBehaviour {
 
 	void OnTriggerEnter(Collider collider)
     {
-		Debug.Log ("There was a collision");
+		//Debug.Log ("There was a collision");
         if(!collidingObjects.Contains(collider.gameObject))
         {
             collidingObjects.Add(collider.gameObject);
@@ -16,7 +16,7 @@ public class User_Attack : MonoBehaviour {
 
 	void OnTriggerExit(Collider collider)
     {
-		Debug.Log ("There is no longer a collision");
+		//Debug.Log ("There is no longer a collision");
         if (collidingObjects.Contains(collider.gameObject))
         {
             collidingObjects.Remove(collider.gameObject);
@@ -32,9 +32,10 @@ public class User_Attack : MonoBehaviour {
 	void Update () {
 
 		if (Input.GetMouseButtonDown (0)) {
-			Debug.Log ("Pressed left click.");
+			//Debug.Log ("Pressed left click.");
             foreach(GameObject obj in collidingObjects)
             {
+                if(obj.Equals(GameObject.FindGameObjectWithTag("Enemy")))
                 obj.GetComponent<Stats>().ApplyDamage(30); // TODO get players str
             }
 		}

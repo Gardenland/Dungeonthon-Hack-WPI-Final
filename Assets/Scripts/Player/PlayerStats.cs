@@ -7,7 +7,7 @@ public class PlayerStats : Stats {
     private int kills;
     private StatsUI ui;
 
-    public int Health
+    public new int Health
     {
         get
         {
