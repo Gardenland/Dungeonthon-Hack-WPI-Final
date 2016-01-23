@@ -4,10 +4,9 @@ using System.Collections;
 public class User_Attack : MonoBehaviour
 {
 
-    public System.Collections.Generic.List<GameObject> collidingObjects = new System.Collections.Generic.List<GameObject>();
-
+   
     public float cooldown = 0.0f;
-    public float MeleeAnimTime = 3f;
+    public float MeleeAnimTime = 1f;
     bool Swinging = false;
     public int damage = 5;
     public int arrow_damage = 20;
@@ -20,36 +19,13 @@ public class User_Attack : MonoBehaviour
     float arrow_spawn_dist = 2.0f;
     GameObject arrow;
 
-    void OnTriggerEnter(Collider collider)
-    {
-        //Debug.Log ("There was a collision");
-        if (!collidingObjects.Contains(collider.gameObject))
-        {
-            collidingObjects.Add(collider.gameObject);
-        }
-    }
 
-    void OnTriggerExit(Collider collider)
-    {
-        //Debug.Log ("There is no longer a collision");
-        if (collidingObjects.Contains(collider.gameObject))
-        {
-            collidingObjects.Remove(collider.gameObject);
-        }
-        if (collider.gameObject.Equals(GameObject.FindGameObjectWithTag("Enemy")))
-        {
-            if (collider.gameObject.GetComponent<Stats>().Health <= 0) //if the enemy dies, remove it from the list of collisions
-            {
-                collidingObjects.Remove(collider.gameObject);
-            }
-        }
-    }
 
     // Use this for initialization
     void Start()
     {
         
-        MeleeAnimTime = 3;
+        MeleeAnimTime = 1;
     }
 
     // Update is called once per frame
@@ -73,27 +49,31 @@ public class User_Attack : MonoBehaviour
     {
         if (!Swinging && Time.time - cooldown > 1.5f)
         {
-            PlayAnimation();
-            foreach (GameObject obj in collidingObjects)
-            {
-                if (obj.Equals(GameObject.FindGameObjectWithTag("Enemy")) && obj != null)
-                {
-                    obj.GetComponent<Stats>().ApplyDamage(damage); // TODO get players str
-                }
-
-            }
+            StartAnimation();
             cooldown = Time.time;
         }
     }
 
-    void PlayAnimation()
+    void StartAnimation()
     {
-        Debug.Log("Playing Anim in class: " + this);
         Swinging = true;
-        swingingWeapon = Instantiate(Resources.Load("Sword"), transform.position + arrow_spawn_dist * transform.right, transform.rotation) as GameObject;
+        Quaternion rot = Quaternion.Euler(gameObject.transform.rotation.eulerAngles + new Vector3(0, 90, 0));
+        swingingWeapon = Instantiate(Resources.Load("Sword"), transform.position, rot) as GameObject;
         swingingWeapon.transform.parent = transform;
-        // lerp from y:-90 to y:90 over MeleeAnimTime
+
+        StartCoroutine(PlayAnimation(gameObject.transform.rotation.eulerAngles + new Vector3(0, -89, 0), MeleeAnimTime));
         StartCoroutine("StopAnimation");
+    }
+
+    IEnumerator PlayAnimation(Vector3 byAngles, float inTime)
+    {
+        var fromAngle = swingingWeapon.transform.rotation;
+        var toAngle = Quaternion.Euler(byAngles);
+        for (var t = 0f; t < 1; t += Time.deltaTime / inTime)
+        {
+            swingingWeapon.transform.rotation = Quaternion.Lerp(fromAngle, toAngle, t);
+            yield return null;
+        }
     }
 
     IEnumerator StopAnimation()
