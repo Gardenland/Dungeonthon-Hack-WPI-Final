@@ -6,8 +6,11 @@ public class User_Attack : MonoBehaviour {
     public System.Collections.Generic.List<GameObject> collidingObjects = new System.Collections.Generic.List<GameObject>();
 
     public float cooldown =  0.0f;
-   // bool canAttack = false;
+    public float MeleeAnimTime = 3f;
+    bool Swinging = false;
     public int damage = 5;
+
+    private GameObject swingingWeapon;
 
 	void OnTriggerEnter(Collider collider)
     {
@@ -52,9 +55,9 @@ public class User_Attack : MonoBehaviour {
 
     void Attack()
     {
-        if(Time.time - cooldown > 1.5f)
+        if(!Swinging && Time.time - cooldown > 1.5f)
         {
-            //canAttack = true;
+            PlayAnimation();
             foreach (GameObject obj in collidingObjects)
             {
                 if (obj.Equals(GameObject.FindGameObjectWithTag("Enemy")) && obj != null)
@@ -65,5 +68,20 @@ public class User_Attack : MonoBehaviour {
             }
             cooldown = Time.time;
         }
+    }
+
+    void PlayAnimation()
+    {
+        Swinging = true;
+        // spawn weapon
+        // lerp from y:-90 to y:90 over MeleeAnimTime
+        StartCoroutine("StopAnimation");
+    }
+
+    IEnumerator StopAnimation()
+    {
+        yield return new WaitForSeconds(MeleeAnimTime);
+        Destroy(swingingWeapon);
+        Swinging = false;
     }
 }
