@@ -35,7 +35,7 @@ public class Attacks : MonoBehaviour
             GameObject arrow;
             arrow = Instantiate(Resources.Load(RangedWeaponName), transform.position + Vector3.up + arrow_spawn_dist * transform.forward, transform.rotation) as GameObject;
             arrow.GetComponent<ImpactDamage>().objectsHit.Add(gameObject);
-            Destroy(arrow, 10f);
+            Destroy(arrow, 3f);
             lastShotTime = Time.time;
         }
     }
