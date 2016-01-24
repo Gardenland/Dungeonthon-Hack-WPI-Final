@@ -4,6 +4,7 @@
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
+		_ExtraLight ("Extra Light", Float) = 3
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -32,6 +33,7 @@
 		half _Glossiness;
 		half _Metallic;
 		fixed4 _Color;
+		fixed _ExtraLight;
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 
@@ -40,7 +42,7 @@
 			fixed fadeTex = tex2D (_MainTex, screenUV).r;
 			clip (fadeTex - (1- _Color.a));
 			
-			o.Albedo = IN.vertexColor.rgb * 3 + .25;
+			o.Albedo = IN.vertexColor.rgb * _ExtraLight ;
 			o.Emission = _Color.rgb;
 			
 			// Metallic and smoothness come from slider variables
