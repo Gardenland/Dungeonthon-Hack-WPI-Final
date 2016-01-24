@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Enemy\EyeballBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemy\TrollBehavior.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\HealthPickup.cs" />
     <Compile Include="Assets\Scripts\ImpactDamage.cs" />
     <Compile Include="Assets\Scripts\PlaceOnGround.cs" />
     <Compile Include="Assets\Scripts\Player\CameraScript.cs" />
