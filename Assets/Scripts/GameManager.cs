@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         DontDestroyOnLoad(this);
+		Cursor.visible = false;
     }
 
 	// Use this for initialization
@@ -41,6 +42,12 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (state == GameState.MainMenu && Input.GetButtonDown ("Fire1")) {
+			OnPlayButtonClick ();
+		}
+		if (state == GameState.GameOver && Input.GetButtonDown ("Fire1")) {
+			GoToMainMenu ();
+		}
 	
 	}
 
