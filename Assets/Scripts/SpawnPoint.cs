@@ -4,14 +4,20 @@ using System.Collections;
 public class SpawnPoint : MonoBehaviour {
 
     public string EnemyType;
-    public float CheckForMobTime;
+    public bool SpawnOnStart;
+    public bool WaitForMobDeath;
     public float RespawnTime;
     public GameObject Mob;
 
 	// Use this for initialization
 	void Start () {
         if (Mob == null)
-            StartCoroutine(SpawnEnemy());
+        {
+            if (SpawnOnStart)
+                SpawnMob();
+            else
+                StartCoroutine(DelayedSpawn());
+        }
     }
 	
 	// Update is called once per frame
@@ -25,10 +31,18 @@ public class SpawnPoint : MonoBehaviour {
         Gizmos.DrawCube(transform.position, new Vector3(1, 1, 1));
     }
 
-    public IEnumerator SpawnEnemy()
+    public IEnumerator DelayedSpawn()
     {
         yield return new WaitForSeconds(RespawnTime);
+        SpawnMob();
+    }
+
+    public void SpawnMob()
+    {
         Mob = Instantiate(Resources.Load(EnemyType), transform.position, transform.rotation) as GameObject;
-        Mob.GetComponent<EnemyBehavior>().Spawn = this;
+        if(WaitForMobDeath)
+            Mob.GetComponent<EnemyBehavior>().Spawn = this;
+        else
+            StartCoroutine(DelayedSpawn());
     }
 }

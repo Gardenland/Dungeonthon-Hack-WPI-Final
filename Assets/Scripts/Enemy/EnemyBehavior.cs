@@ -72,7 +72,8 @@ abstract public class EnemyBehavior : MonoBehaviour
     public void OnDeath()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().Kills++;
-        Spawn.StartCoroutine("SpawnEnemy");
+        if(Spawn != null)
+            Spawn.StartCoroutine("SpawnEnemy");
         Destroy(gameObject);
     }
 
