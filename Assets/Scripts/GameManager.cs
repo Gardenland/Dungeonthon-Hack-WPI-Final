@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -6,9 +7,8 @@ public class GameManager : MonoBehaviour {
     public enum GameState
     {
         MainMenu,
-        Loading,
         Playing,
-        Paused,
+        Paused, // TODO after hackathon
         GameOver,
         GameWon
     }
@@ -42,4 +42,9 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void OnPlayButtonClick()
+    {
+        SceneManager.LoadScene("test_Dungeon");
+    }
 }

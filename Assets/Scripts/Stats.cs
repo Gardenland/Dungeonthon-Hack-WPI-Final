@@ -8,7 +8,7 @@ public class Stats : MonoBehaviour
 
     public int initHealth;
 
-    public int Health
+    virtual public int Health
     {
         get
         {
@@ -39,6 +39,7 @@ public class Stats : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
+        Debug.Log(gameObject + " Damaged for " + damage + ".");
         Health -= damage;
 
     }

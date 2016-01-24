@@ -7,7 +7,7 @@ public class PlayerStats : Stats {
     private int kills;
     private StatsUI ui;
 
-    public new int Health
+    public override int Health
     {
         get
         {
@@ -51,8 +51,10 @@ public class PlayerStats : Stats {
 
     // Use this for initialization
     void Start () {
+        Debug.Log("In Start");
         ui = GameObject.Find("UIStats").GetComponent<StatsUI>();
         Health = initHealth;
+
 	}
 	
 	// Update is called once per frame

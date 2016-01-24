@@ -3,8 +3,10 @@ using System.Collections;
 
 public class Attacks : MonoBehaviour
 {
+    public bool FriendlyFire;
+    public bool UseBigSword;
 
-    public float MeleeAnimTime;
+    public float MeleeAnimSpeed;
     public float MeleeCooldown;
     private float lastSwingTime;
     private bool Swinging = false;
@@ -38,11 +40,20 @@ public class Attacks : MonoBehaviour
     {
         Swinging = true;
         Quaternion rot = Quaternion.Euler(gameObject.transform.rotation.eulerAngles + new Vector3(0, 90, 0));
-		swingingWeapon = Instantiate(Resources.Load("Sword"), transform.position + Vector3.up, rot) as GameObject;
+        if(UseBigSword)
+		    swingingWeapon = Instantiate(Resources.Load("BigSword"), transform.position + Vector3.up, rot) as GameObject;
+        else
+            swingingWeapon = Instantiate(Resources.Load("Sword"), transform.position + Vector3.up, rot) as GameObject;
         swingingWeapon.GetComponent<ImpactDamage>().objectsHit.Add(gameObject);
         swingingWeapon.transform.parent = transform;
 
-        StartCoroutine(PlayAnimation(gameObject.transform.rotation.eulerAngles + new Vector3(0, -89, 0), MeleeAnimTime));
+        if (FriendlyFire)
+            swingingWeapon.GetComponent<ImpactDamage>().Faction = "None";
+        else
+            swingingWeapon.GetComponent<ImpactDamage>().Faction = gameObject.tag;
+            
+
+        StartCoroutine(PlayAnimation(gameObject.transform.rotation.eulerAngles + new Vector3(0, -89, 0), MeleeAnimSpeed));
     }
 
     public IEnumerator PlayAnimation(Vector3 byAngles, float inTime)
