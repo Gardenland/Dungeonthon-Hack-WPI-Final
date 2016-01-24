@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         CharacterController controller = GetComponent<CharacterController>();
         Vector3 next_dir = new Vector3(Input.GetAxis("Vertical"), 0, -Input.GetAxis("Horizontal")) * speed;
-		next_dir = next_dir ;
         if(next_dir != Vector3.zero){
             transform.rotation = Quaternion.LookRotation(next_dir);
 			next_dir.y -= gravity; 
