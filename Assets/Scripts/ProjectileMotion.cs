@@ -8,6 +8,7 @@ public class ProjectileMotion : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
+        Debug.Log(gameObject + " Triggered");
             if ( collider.gameObject != null)
             {
 				Rigidbody arrowBody = gameObject.GetComponent<Rigidbody>();
@@ -18,8 +19,8 @@ public class ProjectileMotion : MonoBehaviour {
 
 	void OnCollision(Collider collider)
 	{
-		
-		Rigidbody arrowBody = gameObject.GetComponent<Rigidbody>();
+        Debug.Log(gameObject + " Collided");
+        Rigidbody arrowBody = gameObject.GetComponent<Rigidbody>();
 		arrowBody.velocity = Vector3.zero;
 		Destroy(gameObject, 0.5f);
 	}

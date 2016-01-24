@@ -18,7 +18,7 @@ public class PlayerAttacks : Attacks {
         }
         if (Input.GetButtonUp("Fire2"))
         {
-            Shoot();
+            RangedAttack();
         }
 
     }

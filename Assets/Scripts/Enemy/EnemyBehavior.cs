@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 [RequireComponent(typeof(CharacterController))]
-public class EnemyBehavior : MonoBehaviour
+abstract public class EnemyBehavior : MonoBehaviour
 {
 
-    public GameObject Player;
+    private GameObject Player;
 
     // Use this for initialization
-    void Start()
+    public void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -18,31 +18,27 @@ public class EnemyBehavior : MonoBehaviour
     * Will allow factions to fight
     */
 
-    public float huntRange = 9f;
-    public float speed = 0.1f;
-    public float step;
-    public float followdist;// = transform.position - Player.transform.position;
-    public float Playerradius = 1f;// Player.GetComponent;
-    public Vector3 enemy_direction;
-    public Vector3 enemy_movement;
-    public float enemy_health;
-    public float gravity = 10.0f;
+    public float AggroRange = 9f;
+    public float MovementSpeed = 0.1f;
+    private float currentDist;// = transform.position - Player.transform.position;
+    public float AttackRange = 1f;// Player.GetComponent;
+    private Vector3 enemy_direction;
+    private Vector3 enemy_movement;
+    public float Gravity = 10.0f;
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
 
         CharacterController enemyController = GetComponent<CharacterController>();
         enemy_direction = Player.transform.position - transform.position;
-        enemy_movement = enemy_direction.normalized * speed * Time.deltaTime;
-        enemy_movement.y -= gravity * Time.deltaTime;
-        enemy_health = this.GetComponent<Stats>().Health;
+        enemy_movement = enemy_direction.normalized * MovementSpeed * Time.deltaTime;
+        enemy_movement.y -= Gravity * Time.deltaTime;
 
-        followdist = Vector3.Distance(transform.position, Player.transform.position);
-        step = speed - Time.deltaTime;
-        if ((followdist < huntRange))
+        currentDist = Vector3.Distance(transform.position, Player.transform.position);
+        if ((currentDist < AggroRange))
         {
-            if (Vector3.Distance(transform.position, Player.transform.position) > Playerradius)
+            if (Vector3.Distance(transform.position, Player.transform.position) > AttackRange)
             {
                 //transform.position = Vector3.MoveTowards (transform.position, Player.transform.position, step);
                 if (enemy_movement.magnitude > enemy_direction.magnitude)
@@ -51,7 +47,7 @@ public class EnemyBehavior : MonoBehaviour
             }
             else
             {
-                gameObject.GetComponent<Attacks>().MeleeAttack();
+                Attack();
             }
         }
 
@@ -82,6 +78,8 @@ public class EnemyBehavior : MonoBehaviour
         Debug.Log("GameOver");
         Destroy(this);
     }
+
+    abstract public void Attack();
 }
 
 
