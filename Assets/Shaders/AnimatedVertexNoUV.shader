@@ -61,7 +61,7 @@
 			clip (fadeTex - (1- _Color.a));
 			
 			//clip (frac((IN.worldPos.yx+IN.worldPos.z*0.1) * 25) - _Dissolve);
-			o.Albedo = IN.vertexColor.rgb;
+			o.Albedo = IN.vertexColor.rgb * 3 + .25;
 			o.Emission = _Color.rgb;
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic ;
