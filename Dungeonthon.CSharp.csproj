@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Assets\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Attacks.cs" />
+    <Compile Include="Assets\Scripts\DestructableEnvironment.cs" />
     <Compile Include="Assets\Scripts\DropItem.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemy\EyeballBehavior.cs" />
