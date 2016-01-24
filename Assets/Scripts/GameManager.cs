@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour {
         state = GameState.GameOver;
         SendAllGameObjectsMessage("GameOver");
         Destroy(GameObject.Find("UIStats"));
-        GameObject ui = Instantiate(Resources.Load("UI/UIGameOver"), transform.position, transform.rotation) as GameObject;
+        GameObject ui = Instantiate(Resources.Load("UI/UIGameOver")) as GameObject;
         ui.GetComponentInChildren<Button>().onClick.AddListener(GoToMainMenu);
-        
-        foreach(Text label in ui.GetComponentsInChildren<Text>())
+
+        foreach (Text label in ui.GetComponentsInChildren<Text>())
         {
             if (label.name.Equals("Slain"))
             {
@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour {
                 break;
             }
         }
+
+
     }
 
     public void GoToMainMenu()

@@ -16,7 +16,8 @@ public class CameraScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = Vector3.LerpUnclamped(transform.position, player.transform.position + playerOffset,  Time.smoothDeltaTime *2);
+        if(player != null)
+		    transform.position = Vector3.LerpUnclamped(transform.position, player.transform.position + playerOffset,  Time.smoothDeltaTime *2);
         //transform.rotation = Quaternion.Euler(45, 90, 0);
 	}
 }
