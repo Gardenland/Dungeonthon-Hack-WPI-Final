@@ -39,7 +39,7 @@ public class Stats : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        Debug.Log(gameObject + " Damaged for " + damage + ".");
+        //Debug.Log(gameObject + " Damaged for " + damage + ".");
         Health -= damage;
 
     }

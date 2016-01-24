@@ -76,6 +76,12 @@ public class EnemyBehavior : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void GameOver()
+    {
+        Debug.Log("GameOver");
+        Destroy(this);
+    }
 }
 
 

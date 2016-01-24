@@ -45,6 +45,27 @@ public class GameManager : MonoBehaviour {
 
     public void OnPlayButtonClick()
     {
+        state = GameState.Playing;
         SceneManager.LoadScene("test_Dungeon");
+    }
+
+    public void OnPlayerDeath()
+    {
+        SendAllGameObjectsMessage("GameOver");
+        Destroy(GameObject.Find("UIStats"));
+        Instantiate(Resources.Load("UIGameOver"), transform.position, transform.rotation);
+    }
+
+    public void OnPlayerWon()
+    {
+        SendAllGameObjectsMessage("GameOver");
+        Destroy(GameObject.Find("UIStats"));
+    }
+
+    public void SendAllGameObjectsMessage(string function)
+    {
+        GameObject[] objs = GameObject.FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in objs)
+            obj.BroadcastMessage(function);
     }
 }

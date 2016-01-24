@@ -18,7 +18,10 @@ public class PlayerStats : Stats {
             hp = value;
             ui.Health = value;
             if (hp <= 0)
-                gameObject.SendMessage("OnDeath");
+            {
+                GameObject.Find("Manager").GetComponent<GameManager>().OnPlayerDeath();
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -51,7 +54,6 @@ public class PlayerStats : Stats {
 
     // Use this for initialization
     void Start () {
-        Debug.Log("In Start");
         ui = GameObject.Find("UIStats").GetComponent<StatsUI>();
         Health = initHealth;
 

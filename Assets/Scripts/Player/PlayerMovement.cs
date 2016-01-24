@@ -18,4 +18,9 @@ public class PlayerMovement : MonoBehaviour {
 			controller.Move(next_dir * Time.deltaTime);
         }
     }
+
+    public void GameOver()
+    {
+        Destroy(this);
+    }
 }
