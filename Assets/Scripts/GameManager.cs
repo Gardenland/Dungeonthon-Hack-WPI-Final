@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
@@ -51,9 +52,17 @@ public class GameManager : MonoBehaviour {
 
     public void OnPlayerDeath()
     {
+        state = GameState.GameOver;
         SendAllGameObjectsMessage("GameOver");
         Destroy(GameObject.Find("UIStats"));
-        Instantiate(Resources.Load("UIGameOver"), transform.position, transform.rotation);
+        GameObject ui = Instantiate(Resources.Load("UI/UIGameOver"), transform.position, transform.rotation) as GameObject;
+        ui.GetComponentInChildren<Button>().onClick.AddListener(GoToMainMenu);
+    }
+
+    public void GoToMainMenu()
+    {
+        state = GameState.MainMenu;
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void OnPlayerWon()

@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\ProjectileMotion.cs" />
+    <Compile Include="Assets\Scripts\Scrolluvs.cs" />
     <Compile Include="Assets\Scripts\Stats.cs" />
     <Compile Include="Assets\Scripts\UI\StatsUI.cs" />
     <Compile Include="Assets\Scripts\WC_Camera.cs" />
@@ -88,6 +89,7 @@
     <None Include="Assets\Shaders\AnimatedVertexNoUV.shader" />
     <None Include="Assets\Shaders\EyeBall.shader" />
     <None Include="Assets\Shaders\HumanShader.shader" />
+    <None Include="Assets\Shaders\SonicWave.shader" />
     <None Include="Assets\Shaders\UnlitVertexColor.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
