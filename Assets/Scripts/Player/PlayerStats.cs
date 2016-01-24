@@ -52,7 +52,7 @@ public class PlayerStats : Stats {
     // Use this for initialization
     void Start () {
         ui = GameObject.Find("UIStats").GetComponent<StatsUI>();
-        Health = Mana = Kills = 0;
+        Health = initHealth;
 	}
 	
 	// Update is called once per frame

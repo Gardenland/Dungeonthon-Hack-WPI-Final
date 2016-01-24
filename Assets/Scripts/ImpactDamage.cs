@@ -7,10 +7,11 @@ public class ImpactDamage : MonoBehaviour {
 
     public int Damage;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+    // Use this for initialization
+    void Start()
+    {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,10 +20,11 @@ public class ImpactDamage : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log ("There was a collision");
         if (collider.gameObject != null && !objectsHit.Contains(collider.gameObject))
         {
-            collider.gameObject.GetComponent<Stats>().ApplyDamage(Damage);
+            Stats stats = collider.gameObject.GetComponent<Stats>();
+            if (stats != null)
+                stats.ApplyDamage(Damage);
             objectsHit.Add(collider.gameObject);
         }
     }

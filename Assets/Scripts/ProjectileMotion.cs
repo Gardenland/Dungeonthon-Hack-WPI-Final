@@ -3,65 +3,34 @@ using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class ProjectileMotion : MonoBehaviour {
-    public System.Collections.Generic.List<GameObject> collidingObjects = new System.Collections.Generic.List<GameObject>();
-    //public Rigidbody arrow_body;
-    public float speed;
-    GameObject arrow;
-    GameObject player;
-    public int damage = 10;
-    public float shot_delay = 10;
-    public float shot_cooldown = 0;
+    public float ArrowSpeed = 0;
 
 
     void OnTriggerEnter(Collider collider)
     {
-        if (!collidingObjects.Contains(collider.gameObject))
-        {
-            collidingObjects.Add(collider.gameObject);
             if ( collider.gameObject != null)
             {
-                collider.gameObject.GetComponent<Stats>().ApplyDamage(damage); // TODO get players str
-				Rigidbody arrowBody = arrow.GetComponent<Rigidbody>();
+				Rigidbody arrowBody = gameObject.GetComponent<Rigidbody>();
 				arrowBody.velocity = Vector3.zero;
-                Destroy(gameObject,0.05f);
+                //Destroy(gameObject,0.05f);
             }
-        }
     }
 
 	void OnCollision(Collider collider)
 	{
 		
-		Rigidbody arrowBody = arrow.GetComponent<Rigidbody>();
+		Rigidbody arrowBody = gameObject.GetComponent<Rigidbody>();
 		arrowBody.velocity = Vector3.zero;
-		Destroy(gameObject,0.05f);
+		Destroy(gameObject, 0.5f);
 	}
-
-
-
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collidingObjects.Contains(collider.gameObject))
-        {
-            collidingObjects.Remove(collider.gameObject);
-        }
-        if (collider.gameObject != null)
-        {
-            if(collider.gameObject.GetComponent<Stats>().Health <= 0)
-            {
-                collidingObjects.Remove(collider.gameObject);
-            }
-        }
-    }
 
 	// Use this for initialization
 	void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");
-        arrow = GameObject.FindGameObjectWithTag("Arrow");
-        //Rigidbody arrow_body = arrow.GetComponent<Rigidbody>();
-        //shot_delay = 3f;
-      //  shot_cooldown = 1f;
-	}
+        Rigidbody clone_body;
+        clone_body = gameObject.GetComponent<Rigidbody>();
+        clone_body.velocity = transform.forward * ArrowSpeed;
+        clone_body.AddForce(transform.forward * ArrowSpeed, ForceMode.Force);
+    }
 	
 	// Update is called once per frame
 	void Update () {

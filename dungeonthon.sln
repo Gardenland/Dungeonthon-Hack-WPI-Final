@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dungeonthon.CSharp.Plugins", "Dungeonthon.CSharp.Plugins.csproj", "{43CAA515-8A6B-B51E-2DEC-48C454510C6B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dungeonthon.CSharp", "Dungeonthon.CSharp.csproj", "{285D4405-1567-AECE-A7BE-275C6A17EEE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dungeonthon.CSharp.Editor", "Dungeonthon.CSharp.Editor.csproj", "{E92CFF88-4EF8-3CA0-70AF-43A73D1BA565}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +13,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43CAA515-8A6B-B51E-2DEC-48C454510C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43CAA515-8A6B-B51E-2DEC-48C454510C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43CAA515-8A6B-B51E-2DEC-48C454510C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43CAA515-8A6B-B51E-2DEC-48C454510C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{285D4405-1567-AECE-A7BE-275C6A17EEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{285D4405-1567-AECE-A7BE-275C6A17EEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{285D4405-1567-AECE-A7BE-275C6A17EEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{285D4405-1567-AECE-A7BE-275C6A17EEE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92CFF88-4EF8-3CA0-70AF-43A73D1BA565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92CFF88-4EF8-3CA0-70AF-43A73D1BA565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92CFF88-4EF8-3CA0-70AF-43A73D1BA565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92CFF88-4EF8-3CA0-70AF-43A73D1BA565}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

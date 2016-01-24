@@ -5,8 +5,8 @@ public class Stats : MonoBehaviour
 {
 
     protected int hp;
-    protected int str;
-    protected int def;
+
+    public int initHealth;
 
     public int Health
     {
@@ -18,22 +18,17 @@ public class Stats : MonoBehaviour
         {
             hp = value;
             if (hp <= 0)
-                
+            {
                 gameObject.SendMessage("OnDeath");
+                Debug.Log(gameObject + " Died.");
+            }
         }
     }
-
-    public int Strength { get; set; }
-
-    public int Defense { get; set; }
 
     // Use this for initialization
     void Start()
     {
-		hp = 50;
-		str = 5;
-		def = 1;
-
+        Health = initHealth;
     }
 
     // Update is called once per frame
@@ -44,7 +39,7 @@ public class Stats : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        Health -= damage * damage / def;
+        Health -= damage;
 
     }
 }
