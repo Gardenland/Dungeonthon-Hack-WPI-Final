@@ -41,7 +41,7 @@ public class Attacks : MonoBehaviour
         Swinging = true;
         Quaternion rot = Quaternion.Euler(gameObject.transform.rotation.eulerAngles + new Vector3(0, 90, 0));
         if(UseBigSword)
-		    swingingWeapon = Instantiate(Resources.Load("BigSword"), transform.position + Vector3.up, rot) as GameObject;
+		    swingingWeapon = Instantiate(Resources.Load("Axe"), transform.position + Vector3.up, rot) as GameObject;
         else
             swingingWeapon = Instantiate(Resources.Load("Sword"), transform.position + Vector3.up, rot) as GameObject;
         swingingWeapon.GetComponent<ImpactDamage>().objectsHit.Add(gameObject);
