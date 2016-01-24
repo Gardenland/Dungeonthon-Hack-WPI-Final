@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Scrolluvs.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Stats.cs">
     <Files>
-      <File FileName="Assets\Scripts\Scrolluvs.cs" Line="16" Column="4" />
+      <File FileName="Assets\Scripts\Stats.cs" Line="1" Column="1" />
       <File FileName="Assets\Shaders\EyeBall.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Scrolluvs.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\PlaceOnGround.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player\CameraScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Enemy\EnemyBehavior.cs" Line="1" Column="1" />
@@ -12,6 +13,9 @@
       <File FileName="Assets\Shaders\HumanShader.shader" Line="1" Column="1" />
       <File FileName="Assets\Shaders\AnimatedVertexNoUV.shader" Line="1" Column="1" />
       <File FileName="Assets\Shaders\SonicWave.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HealthPickup.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DropItem.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\TrollBehavior.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

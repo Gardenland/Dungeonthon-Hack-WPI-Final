@@ -7,6 +7,7 @@
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Frequency ("Frequency", Range(1,8)) = 3
 		_Amplitude ("Amplitude", Range(0,2)) = 3
+		_ExtraLight ("Extra Light", Float) = 3
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -28,6 +29,7 @@
 		half _Amplitude;
 		half _Frequency;
 		fixed4 _Color;
+		fixed _ExtraLight;
 		
 		struct Input {
 			float2 uv_MainTex;
@@ -61,7 +63,7 @@
 			clip (fadeTex - (1- _Color.a));
 			
 			//clip (frac((IN.worldPos.yx+IN.worldPos.z*0.1) * 25) - _Dissolve);
-			o.Albedo = IN.vertexColor.rgb * 3 + .25;
+			o.Albedo = IN.vertexColor.rgb * _ExtraLight + .25;
 			o.Emission = _Color.rgb;
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic ;
