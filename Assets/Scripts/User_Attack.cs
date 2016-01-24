@@ -16,7 +16,7 @@ public class User_Attack : MonoBehaviour
 
     private GameObject swingingWeapon;
 
-    float arrow_spawn_dist = 2.0f;
+    float arrow_spawn_dist = 1.0f;
     GameObject arrow;
 
 
@@ -58,7 +58,7 @@ public class User_Attack : MonoBehaviour
     {
         Swinging = true;
         Quaternion rot = Quaternion.Euler(gameObject.transform.rotation.eulerAngles + new Vector3(0, 90, 0));
-        swingingWeapon = Instantiate(Resources.Load("Sword"), transform.position, rot) as GameObject;
+		swingingWeapon = Instantiate(Resources.Load("Sword"), transform.position + Vector3.up, rot) as GameObject;
         swingingWeapon.transform.parent = transform;
 
         StartCoroutine(PlayAnimation(gameObject.transform.rotation.eulerAngles + new Vector3(0, -89, 0), MeleeAnimTime));
@@ -91,7 +91,7 @@ public class User_Attack : MonoBehaviour
             Rigidbody clone_body;
             //shoot
             //Vector3 arrow_spawn = transform.position + new Vector3(0, 0, transform.localPosition.z + 1);
-            arrow_clone = Instantiate(Resources.Load("FireArrow"), transform.position + arrow_spawn_dist * transform.forward, transform.rotation) as GameObject;
+			arrow_clone = Instantiate(Resources.Load("FireArrow"), transform.position + Vector3.up + arrow_spawn_dist * transform.forward, transform.rotation) as GameObject;
             clone_body = arrow_clone.GetComponent<Rigidbody>();
             clone_body.velocity = transform.forward * speed;
             clone_body.AddForce(transform.forward * speed, ForceMode.Force);

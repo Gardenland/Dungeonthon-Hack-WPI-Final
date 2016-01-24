@@ -21,10 +21,23 @@ public class ProjectileMotion : MonoBehaviour {
             if ( collider.gameObject != null)
             {
                 collider.gameObject.GetComponent<Stats>().ApplyDamage(damage); // TODO get players str
+				Rigidbody arrowBody = arrow.GetComponent<Rigidbody>();
+				arrowBody.velocity = Vector3.zero;
                 Destroy(gameObject,0.05f);
             }
         }
     }
+
+	void OnCollision(Collider collider)
+	{
+		
+		Rigidbody arrowBody = arrow.GetComponent<Rigidbody>();
+		arrowBody.velocity = Vector3.zero;
+		Destroy(gameObject,0.05f);
+	}
+
+
+
 
     void OnTriggerExit(Collider collider)
     {

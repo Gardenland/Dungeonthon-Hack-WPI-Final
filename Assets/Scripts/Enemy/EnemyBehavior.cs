@@ -38,10 +38,17 @@ public class EnemyBehavior : MonoBehaviour {
 		}
         if (Player != null)
         {
-			Quaternion lookRotation;
-			lookRotation = Quaternion.LookRotation(Player.transform.position);
-			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 1000);
-            //transform.LookAt(Player.transform.position);
+			// Look at including x and z leaning
+			transform.LookAt(Player.transform.position);
+
+			// Euler angles are easier to deal with. You could use Quaternions here also
+			// C# requires you to set the entire rotation variable. You can't set the individual x and z (UnityScript can), so you make a temp Vec3 and set it back
+			Vector3 eulerAngles = transform.rotation.eulerAngles;
+			eulerAngles.x = 0;
+			eulerAngles.z = 0;
+
+			// Set the altered rotation back
+			transform.rotation = Quaternion.Euler(eulerAngles);
         }
 
     }
