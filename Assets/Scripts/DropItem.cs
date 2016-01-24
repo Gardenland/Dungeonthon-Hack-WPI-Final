@@ -4,7 +4,7 @@ using System.Collections;
 public class DropItem : MonoBehaviour {
 
     public string Drop;
-    public int Percntage;
+    public int Percentage;
 
 	// Use this for initialization
 	void Start () {
@@ -18,9 +18,10 @@ public class DropItem : MonoBehaviour {
 
     void OnDeath()
     {
+		//Debug.Log("Drop Item!!!");
         int num = Random.Range(0, 100);
-        if (num < Percntage)
-            Instantiate(Resources.Load(Drop), gameObject.transform.position, gameObject.transform.rotation);
+        if (num < Percentage)
+			Instantiate(Resources.Load(Drop), gameObject.transform.position + Vector3.up, gameObject.transform.rotation);
     }
 
 }

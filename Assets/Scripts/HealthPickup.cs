@@ -19,8 +19,10 @@ public class HealthPickup : MonoBehaviour {
         if (collider.gameObject != null)
         {
             Stats stats = collider.gameObject.GetComponent<Stats>();
-            if (stats != null)
-                stats.Health += HealthValue;
+			if (stats != null) {
+				stats.Health += HealthValue;
+				Destroy (gameObject);
+			}
         }
     }
 }
