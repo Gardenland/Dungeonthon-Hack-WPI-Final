@@ -6,9 +6,8 @@ public class GameManager : MonoBehaviour {
     public enum GameState
     {
         MainMenu,
-        Loading,
         Playing,
-        Paused,
+        Paused, // TODO after hackathon
         GameOver,
         GameWon
     }
