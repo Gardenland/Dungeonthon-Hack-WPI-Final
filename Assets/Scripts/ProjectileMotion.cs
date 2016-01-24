@@ -13,7 +13,7 @@ public class ProjectileMotion : MonoBehaviour {
             {
 				Rigidbody arrowBody = gameObject.GetComponent<Rigidbody>();
 				arrowBody.velocity = Vector3.zero;
-                //Destroy(gameObject,0.05f);
+                Destroy(gameObject,0.25f);
             }
     }
 

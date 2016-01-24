@@ -25,6 +25,7 @@ abstract public class EnemyBehavior : MonoBehaviour
     private Vector3 enemy_direction;
     private Vector3 enemy_movement;
     public float Gravity = 10.0f;
+    public SpawnPoint Spawn;
 
     // Update is called once per frame
     public void Update()
@@ -70,6 +71,8 @@ abstract public class EnemyBehavior : MonoBehaviour
 
     public void OnDeath()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>().Kills++;
+        Spawn.StartCoroutine("SpawnEnemy");
         Destroy(gameObject);
     }
 

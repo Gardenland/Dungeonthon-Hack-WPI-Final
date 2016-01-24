@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerStats : Stats {
 
-    private int mp;
     private int kills;
     private StatsUI ui;
 
@@ -22,19 +21,6 @@ public class PlayerStats : Stats {
                 GameObject.Find("Manager").GetComponent<GameManager>().OnPlayerDeath();
                 Destroy(gameObject);
             }
-        }
-    }
-
-    public int Mana
-    {
-        get
-        {
-            return mp;
-        }
-        set
-        {
-            mp = value;
-            ui.Mana = value;
         }
     }
 

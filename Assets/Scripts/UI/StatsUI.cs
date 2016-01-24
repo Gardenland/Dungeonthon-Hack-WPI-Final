@@ -5,7 +5,6 @@ using System.Collections;
 public class StatsUI : MonoBehaviour {
 
     private Text health;
-    private Text mana;
     private Text kills;
 
     public int Health
@@ -13,14 +12,6 @@ public class StatsUI : MonoBehaviour {
         set
         {
             health.text = "Health: " + value;
-        }
-    }
-
-    public int Mana
-    {
-        set
-        {
-            mana.text = "Mana: " + value;
         }
     }
 
@@ -35,7 +26,6 @@ public class StatsUI : MonoBehaviour {
     // Use this for initialization
     void Start () {
         health = GameObject.Find("UIHealth").GetComponent<Text>();
-        mana = GameObject.Find("UIMana").GetComponent<Text>();
         kills = GameObject.Find("UIKills").GetComponent<Text>();
 
     }
