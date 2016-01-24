@@ -57,6 +57,15 @@ public class GameManager : MonoBehaviour {
         Destroy(GameObject.Find("UIStats"));
         GameObject ui = Instantiate(Resources.Load("UI/UIGameOver"), transform.position, transform.rotation) as GameObject;
         ui.GetComponentInChildren<Button>().onClick.AddListener(GoToMainMenu);
+        
+        foreach(Text label in ui.GetComponentsInChildren<Text>())
+        {
+            if (label.name.Equals("Slain"))
+            {
+                label.text = "Enemies Slain " + GameObject.Find("Hero").GetComponent<PlayerStats>().Kills;
+                break;
+            }
+        }
     }
 
     public void GoToMainMenu()
