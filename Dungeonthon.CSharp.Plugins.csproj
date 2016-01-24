@@ -106,6 +106,7 @@
     <None Include="Assets\Shaders\AnimatedVertexNoUV.shader" />
     <None Include="Assets\Shaders\EyeBall.shader" />
     <None Include="Assets\Shaders\HumanShader.shader" />
+    <None Include="Assets\Shaders\SonicWave.shader" />
     <None Include="Assets\Shaders\UnlitVertexColor.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
